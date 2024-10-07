@@ -35,7 +35,7 @@
 
         .section h2 {
             margin: 0 0 10px;
-            color: #5cb85c;
+            color: black;
         }
 
         .club {
@@ -63,19 +63,19 @@
             border-radius: 4px;
         }
 
-        input[type="submit"] {
-            background-color: #5cb85c;
+        input {
+            background-color: #007bff;
             color: white;
             border: none;
             border-radius: 4px;
             padding: 10px 15px;
             cursor: pointer;
             transition: background-color 0.3s;
-            width: 100%; /* Full width for submit button */
+            width: 100%;
         }
 
-        input[type="submit"]:hover {
-            background-color: #4cae4c;
+        input:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -89,7 +89,7 @@
             <!-- Dummy Clubs Data -->
             <div class="club">
                 <h3>Coding Club</h3>
-                <p>Learn programming and software development.</p>
+                <p>Learn programming and software development.</p> 
                 <form action="#" method="POST">
                     <input type="submit" value="Join Coding Club">
                 </form>
@@ -119,14 +119,12 @@
 
         <div class="section">
             <h2>Ongoing Programs</h2>
-            <p>Check out the following programs happening across various clubs:</p>
             <ul class="programs-list">
                 <li>Coding Workshop - Date: October 15</li>
                 <li>Art Exhibition - Date: November 5</li>
                 <li>Debate Competition - Date: October 22</li>
                 <li>Sports Day - Date: November 10</li>
             </ul>
-            <p>New programs can be added regularly. Stay tuned!</p>
         </div>
     </div>
 </body>
