@@ -1,5 +1,14 @@
 <?php
-// Database connection (update with your settings)
+session_start(); // Start the session
+
+// Check if the user is logged in
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    // User is not logged in, redirect to login page
+    header('Location: login.php'); // Change to your actual login page
+    exit;
+}
+
+// Database connection
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -13,23 +22,20 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Dummy setup for foreign key table that might contain tutor names
-$dummy_tutors = [
-    1 => 'Tutor A',
-    2 => 'Tutor B',
-    3 => 'Tutor C',
-    4 => 'Tutor D',
-    5 => 'Tutor E'
-];
-
 // Initialize matched tutors array
 $matched_tutors = [];
 
+// Get the student interest from the POST request
 if (isset($_POST['interest'])) {
-    $student_interest = $_POST['interest'];
+    $student_interest = trim($_POST['interest']); // Trim the input
 
     // Query the tutors table to find matching interests
-    $stmt = $conn->prepare("SELECT id, interest FROM tutors WHERE interest LIKE ?");
+    $stmt = $conn->prepare("
+        SELECT tutors.id, tutors.interest, users.student_name 
+        FROM tutors 
+        JOIN users ON tutors.id = users.student_id 
+        WHERE tutors.interest LIKE ?
+    ");
     $search_interest = "%{$student_interest}%";  // SQL wildcard search
     $stmt->bind_param("s", $search_interest);
     $stmt->execute();
@@ -37,17 +43,11 @@ if (isset($_POST['interest'])) {
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $tutor_id = $row['id'];
-            $interest = $row['interest'];
-
-            // Fetch tutor's name from dummy data
-            $tutor_name = isset($dummy_tutors[$tutor_id]) ? $dummy_tutors[$tutor_id] : 'Unknown Tutor';
-
             // Store the matched tutor details in an array
             $matched_tutors[] = [
-                'name' => $tutor_name,
-                'interest' => $interest,
-                'id' => $tutor_id
+                'name' => $row['student_name'],
+                'interest' => $row['interest'],
+                'id' => $row['id']
             ];
         }
     }
@@ -57,7 +57,10 @@ if (isset($_POST['interest'])) {
 
 $conn->close();
 
-// Pass the results back to the view (tutormatching.php)
-header('Location: tutormatching.php?interest=' . urlencode($student_interest) . '&tutors=' . urlencode(json_encode($matched_tutors)));
+// Store matched tutors in the session for display
+$_SESSION['matched_tutors'] = $matched_tutors;
+
+// Redirect to the matching results page
+header('Location: tutormatching.php');
 exit;
 ?>

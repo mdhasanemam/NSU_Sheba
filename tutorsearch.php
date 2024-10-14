@@ -3,10 +3,10 @@ session_start(); // Start the session
 
 // Check if the user is logged in
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header('Location: login.php'); // Redirect to login page if not logged in
+    // Redirect to the login page if not logged in
+    header('Location: login.php'); 
     exit();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -14,11 +14,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutor</title>
+    <title>Tutor Matching</title>
     <style>
       body {
         font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
+        background-color: #f9f9f9;
         margin: 0;
         padding: 20px;
       }
@@ -32,7 +32,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         background-color: #fff;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        max-width: 600px;
+        max-width: 400px;
         margin: 20px auto;
         padding: 20px;
       }
@@ -43,14 +43,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         display: block;
       }
 
-      textarea {
+      input[type="text"] {
         width: 100%;
         border: 1px solid #ccc;
         border-radius: 4px;
         padding: 10px;
-        resize: none;
+        margin-top: 5px;
+        margin-bottom: 15px;
         box-sizing: border-box;
-        margin-bottom: 10px;
       }
 
       input[type="submit"] {
@@ -61,52 +61,28 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         padding: 10px;
         cursor: pointer;
         font-size: 16px;
+        transition: background-color 0.3s;
         width: 100%;
         box-sizing: border-box;
-        transition: background-color 0.3s;
       }
 
       input[type="submit"]:hover {
         background-color: #0056b3;
       }
-
-      .message {
-        margin-top: 20px;
-        padding: 10px;
-        border-radius: 4px;
-        background-color: #e0ffe0;
-        color: #333;
-      }
-
-      .error {
-        background-color: #ffdddd;
-      }
     </style>
   </head>
   <body>
-    <h1>Become a Tutor Today!</h1>
-
-    <?php
-    // Check if there's a message or error in the query string
-    if (isset($_GET['message'])) {
-      $message = htmlspecialchars($_GET['message']);
-      echo "<div class='message'>$message</div>";
-    }
-    if (isset($_GET['error'])) {
-      $error = htmlspecialchars($_GET['error']);
-      echo "<div class='message error'>$error</div>";
-    }
-    ?>
-
-    <form action="tutor_insert.php" method="post">
-      <label for="topics">Interested Teaching Topics:</label>
-      <textarea
-        id="topics"
-        name="topics"
-        rows="5"
-        placeholder="List the subjects or topics you want to teach"
-      ></textarea>
-      <input type="submit" value="Submit" />
+    <h1>Find Your Tutor</h1>
+    <form action="tutormatching_logic.php" method="POST">
+      <label for="interest">Enter your topic of interest:</label>
+      <input
+        type="text"
+        id="interest"
+        name="interest"
+        placeholder="e.g., php"
+        required
+      />
+      <input type="submit" value="Search" />
     </form>
   </body>
 </html>
