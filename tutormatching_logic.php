@@ -4,7 +4,7 @@ session_start(); // Start the session
 // Check if the user is logged in
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     // User is not logged in, redirect to login page
-    header('Location: login.php'); // Change to your actual login page
+    header('Location: login.php'); 
     exit;
 }
 
@@ -27,7 +27,7 @@ $matched_tutors = [];
 
 // Get the student interest from the POST request
 if (isset($_POST['interest'])) {
-    $student_interest = trim($_POST['interest']); // Trim the input
+    $student_interest = trim($_POST['interest']);
 
     // Query the tutors table to find matching interests
     $stmt = $conn->prepare("

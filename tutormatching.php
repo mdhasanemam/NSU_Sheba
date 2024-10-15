@@ -84,12 +84,20 @@ $student_interest = $_SESSION['student_interest'] ?? 'Unknown'; // Fallback if n
     </style>
 </head>
 <body>
-    <h1>Matched Tutors</h1>
+<h1>Matched Tutors</h1>
     <div class="tutor-container">
+        <form action="tutorsearch.php" method="GET">
+            <!--<input type="submit" value="Back to Search">-->
+        </form>
+        
         <?php if (!empty($matched_tutors)): ?>
             <?php foreach ($matched_tutors as $tutor): ?>
                 <div class="tutor">
-                    <h3><?= htmlspecialchars($tutor['name']); ?></h3>
+                    <h3>
+                        <a href="tutor_details.php?tutor_id=<?= htmlspecialchars($tutor['id']); ?>">
+                            <?= htmlspecialchars($tutor['name']); ?>
+                        </a>
+                    </h3>
                     <p>Subjects: <?= htmlspecialchars($tutor['interest']); ?></p>
 
                     <!-- Form for requesting this tutor -->
