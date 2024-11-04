@@ -210,12 +210,12 @@ $conn->close();
             </div>
             <div class="option">
                 <img src="event.png" alt="Event Management">
-                <h3>Event Management</h3>
+                <h3><a href="events_dashboard.php">Events</a></h3>
                 <p>Manage university events</p>
             </div>
             <div class="option">
                 <img src="Course Help.png" alt="Course Help">
-                <h3><a href="tutorsearch.php">Course Help</a></h3>
+                <h3><a href="tutor_my.php">Course Help</a></h3>
                 <p>Find help for your courses</p>
             </div>
             <div class="option">
@@ -238,7 +238,7 @@ $conn->close();
             <?php else: ?>
                 <div class="option">
                     <img src="tutoring.png" alt="Tutoring Page">
-                    <h3><a href="tutoring.php">Tutoring</a></h3>
+                    <h3><a href="tutoring.php">Register as Tutor</a></h3>
                     <p>Become a Tutor</p>
                 </div>
             <?php endif; ?>

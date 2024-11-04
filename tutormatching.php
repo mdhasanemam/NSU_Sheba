@@ -16,9 +16,6 @@ if (!isset($_SESSION['matched_tutors'])) {
 // Retrieve matched tutors from the session
 $matched_tutors = $_SESSION['matched_tutors'];
 
-// Clear session variables after use
-unset($_SESSION['matched_tutors']);
-
 // Assume student interest is stored in session
 $student_interest = $_SESSION['student_interest'] ?? 'Unknown'; // Fallback if not set
 ?>
@@ -62,7 +59,7 @@ $student_interest = $_SESSION['student_interest'] ?? 'Unknown'; // Fallback if n
             margin: 0 0 10px;
             color: #555;
         }
-        input {
+        input[type="submit"], .back-button {
             background-color: #007bff;
             color: white;
             border: none;
@@ -72,9 +69,20 @@ $student_interest = $_SESSION['student_interest'] ?? 'Unknown'; // Fallback if n
             font-size: 16px;
             transition: background-color 0.3s;
             width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
         }
-        input:hover {
+        input[type="submit"]:hover {
             background-color: #0056b3;
+        }
+        .back-button {
+            background-color: #ff4d4d;
+        }
+        .back-button:hover {
+            background-color: #cc0000;
         }
         .no-match {
             text-align: center;
@@ -86,10 +94,7 @@ $student_interest = $_SESSION['student_interest'] ?? 'Unknown'; // Fallback if n
 <body>
 <h1>Matched Tutors</h1>
     <div class="tutor-container">
-        <form action="tutorsearch.php" method="GET">
-            <!--<input type="submit" value="Back to Search">-->
-        </form>
-        
+
         <?php if (!empty($matched_tutors)): ?>
             <?php foreach ($matched_tutors as $tutor): ?>
                 <div class="tutor">
@@ -111,6 +116,9 @@ $student_interest = $_SESSION['student_interest'] ?? 'Unknown'; // Fallback if n
         <?php else: ?>
             <p class="no-match">No tutors found for your interest: <?= htmlspecialchars($student_interest); ?>.</p>
         <?php endif; ?>
+
+        <!-- Back to Search button -->
+        <a href="tutorsearch.php" class="back-button">Back to Search</a>
     </div>
 </body>
 </html>
