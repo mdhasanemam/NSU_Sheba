@@ -1,29 +1,37 @@
-NSU Sheba is your CSE299 project designed to be a comprehensive web-based student management system tailored for the North South University (NSU) community. It focuses on providing solutions to common student needs while promoting collaboration, convenience, and improved campus engagement.
+**# NSU Sheba - CSE299 Project**
+### NSU Sheba is a comprehensive student management web system tailored for the North South University (NSU) community. This project was developed as part of the CSE299 course and aims to improve various aspects of student life through a centralized web application. It facilitates academic assistance, social engagement, and easy access to essential services using modern web technologies.
 
-Project Objectives:
-
-To develop a single platform that simplifies the daily lives of NSU students.
-To enhance academic support systems, social engagement, and service accessibility.
-To utilize web technologies including PHP, MySQL, HTML/CSS to create an interactive and efficient system.
-Core Features of NSU Sheba:
-
-Course Helping System: Students can find and connect with peers who can offer academic assistance in specific subjects, fostering a collaborative learning environment.
-
-Food Vendor System: A marketplace where NSU students can buy food items from campus vendors, streamlining food access.
-
-Book Vendor System: Facilitates buying and selling of textbooks and study materials, making it easier for students to acquire essential resources at affordable prices.
-
-Event Management System for Clubs: Allows student clubs to manage, promote, and coordinate events, improving engagement and participation.
-
-Poll Creation and Voting System: A democratic module where students can raise agendas, vote on topics, and contribute to campus-wide discussions. Voting is restricted to one vote per user and the system deletes agendas that do not reach a specified number of votes within a set timeframe.
-
-Blood Bank: Enables students to register as blood donors, make blood donation requests, and respond to such requests. Donors receive notifications via PHPMailer when they accept a request, ensuring efficient communication and coordination within the NSU community. Requests can be removed by users, and donors can only accept a request once per need.
-
-Tutor System: Connects students with qualified tutors who can offer subject-specific assistance, fostering academic growth and mutual support.
-
-Technical Implementation:
-
-Frontend and Backend Technologies: The project leverages PHP for server-side scripting, MySQL for database management, and HTML/CSS for creating user-friendly interfaces.
-Security: Features like OTP verification for secure signup processes and prepared statements for database interactions to prevent SQL injection are included.
-User Experience: Careful attention is given to ensure a seamless and engaging user experience, from intuitive navigation to dynamic forms and notifications.
-NSU Sheba represents a thoughtful approach to solving real-world challenges faced by NSU students, making it a meaningful contribution as your CSE299 project. The system combines academic support, social services, and innovative modules, demonstrating your ability to create impactful software solutions using web development skills.
+# Project Objectives
+* To create a single, unified platform to simplify and enhance the NSU student experience.
+* To offer innovative features for academic, social, and service-oriented needs.
+* To develop and demonstrate a robust web-based solution using PHP, MySQL, HTML/CSS.
+# Features
+1.   Course Helping System
+ *   Connects students who need assistance with peers offering help in specific courses.
+*    Promotes collaborative learning and mutual academic support within the NSU community.
+2.   Food Vendor System
+*  Provides an online platform for students to buy food from campus vendors.
+*  Simplifies food ordering and ensures a seamless experience for students and vendors.
+3.   Book Vendor System
+*  Facilitates buying and selling textbooks and other study materials among students.
+*  Helps make learning resources more accessible and affordable.
+4.  Event Management System for Clubs
+ * Allows student clubs to plan, promote, and manage events.
+*  Improves member engagement and streamlines event coordination.
+5.  Poll Creation and Voting System
+*  Enables students to create agendas and vote on various topics.
+*  Ensures transparent and democratic decision-making, with features such as single-vote limits, total vote visibility (without revealing identities), and automatic agenda deletion based on timeframes and vote thresholds.
+6.  Blood Bank
+ * Registered students can sign up as blood donors or request blood donations.
+*  Donors can respond to requests, and requesters are notified via PHPMailer.
+*  Ensures requests can be accepted only once per need, and users can manage or delete their requests easily.
+7.  Tutor System
+ * Connects students with tutors who offer academic assistance in specific subjects.
+*  Enhances academic performance and peer-to-peer support.
+# Technical Implementation
+### Frontend & Backend: 
+Developed using PHP for server-side scripting, MySQL for database management, and HTML/CSS for building intuitive user interfaces.
+### Security: 
+Incorporates OTP verification for signup, PHPMailer for secure communication, and prepared statements for preventing SQL injection.
+### Database: 
+Manages data efficiently with user-friendly tables and optimized queries.Welcome to the NSU_Sheba wiki!
